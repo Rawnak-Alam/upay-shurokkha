@@ -16,16 +16,22 @@ Agents can have enough total working capital but insufficient physical cash for 
 
 The index is **not a calibrated fraud probability** and does not determine whether a recipient is a scammer. A low score never guarantees safety. Limited history has a separate status.
 
+## Judge-facing demonstration
+
+Two short flows are visible by default. Agent Planning shows a fictional agent's counted cash, demo wallet float, demand forecast, suggested exchange and three plain-language reasons. Payment Safety shows a fictional recipient, amount, optional customer explanation, concern index, evidence sources and independent verification. Case Review and Evidence & Guide hold technical detail.
+
+The [public upay Agent listing](https://play.google.com/store/apps/details?id=bd.com.upay.agent) describes a dashboard, real-time statement, item-wise transactions and instant commission. Those are the feature references for the agent concept. We do not claim knowledge of its private data schema, rates, balance API or actual forecasting inputs. All transaction and recipient histories here are synthetic. Physical cash is entered by the demonstrator; wallet float is a fictional sample. The payment flow uses no complaint registry, device telemetry or verified recipient risk profile.
+
+The concern index is an **uncalibrated design score**, not a probability or verdict. The hospital example can trigger a warning despite being legitimate. Judges can see why it appeared. The agent exchange suggestion assumes a partner is available and costs are illustrative.
+
 ## Implemented features
 
-- Agent selector, replay date, editable balances, cost/capital constraints and service preference.
-- Hourly demand forecasts and empirical error ranges; projected cash/float balances.
-- One recommended exchange at 09:00, 12:00 or 15:00, including no action.
-- Same-demand replay against historical forecasting and no action, with net earnings and refused requests.
-- Trained multilingual text classifier, concern-score contributions and contextual policy.
-- Simulated cancel, request-review and verified-continuation flows.
-- Session-specific reviewer workspace and JSON/CSV downloads.
-- Reproducible evaluation, stress scenarios, language breakdowns and mistake inspection.
+- Fictional agent scenarios with only two visible balance inputs, a recommended exchange and source-aware reasons.
+- Hourly cash-in/out forecast and actual-day comparison under an optional replay.
+- Pre-payment examples with amount and optional English, Bangla or Banglish reason.
+- Clear distinction between entered information, synthetic historical data and unavailable provider evidence.
+- Simulated cancel, reviewer request and confirmed continuation; no real transfer.
+- Reproducible time-split and held-out-scenario evaluation under Evidence & Guide.
 
 ## Technology and requirements
 

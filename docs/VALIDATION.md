@@ -1,37 +1,21 @@
-# User validation checklist
+# Judge-facing validation
 
-## Agent planning
-- Open the app and confirm that all data is labelled synthetic.
-- Cash shortage: inspect the recommendation, then reveal actual demand.
-- Change to Float shortage; verify recommendation can move cash into float or choose no action.
-- Change to High rebalance cost; verify no exchange is recommended.
-- Set cash and float to zero; verify no positive-value request can be served.
-- Try Unexpected cash-out surge; observe limitations rather than guaranteed service.
-- Change service preference. Higher availability may cost more; expected net benefit is separate.
-- Download a forecast and inspect its columns and values.
+## Agent Planning
+- Start with Cash running low. Read cash, float, estimated cash-out and suggested exchange.
+- Expand Show forecast and replay. Compare no exchange, historical forecast and ML suggestion on the same fictional requests.
+- Choose Exchange is expensive; the suggested action should keep balances.
+- Try Float running low and Very little capital. Explain that an exchange cannot create working capital.
+- Change a balance and confirm the suggested action is recomputed. The example day is fixed, so the forecast does not use future outcomes.
 
-## Payment safety and review
-- Ordinary family payment: low concern in the preset.
-- Suspicious account request: high concern, with separate signals and reviewed-case assumption.
-- Remove reviewed adverse cases and compare the score: the warning is evidence dependent.
-- Legitimate large payment: may receive medium concern; it must not call anyone a scammer.
-- Limited recipient information: insufficient information, not safe.
-- Possible account takeover: device/recovery context should be visible.
-- Edit a description: click Check payment again to update the displayed result.
-- Continue is disabled until independent verification is checked.
-- Request review and inspect the same case, evidence and customer action in Case Review.
-- Review actions stay in this session; clear the cases and confirm removal.
+## Payment Safety
+- Review Urgent account reactivation request. The warning must explain entered text, unusual amount and first recipient.
+- Expand Where these signals came from. Confirm complaints and identity lookup are unavailable and unused.
+- Review Verified hospital bill. A legitimate payment may still raise concern; this is a known false-warning case.
+- Review No prior recipient history. Confirm it says Insufficient information.
+- Change an input and confirm the old result hides until Review before sending is pressed again.
+- Request a demo review, open Case Review and confirm the case and action. Continuing requires independent verification.
 
-## Evidence and reproducibility
-- Read mistakes in held-out text. Note the very small sample size.
-- Confirm mean earnings include exchange costs and show all baselines.
-- Run tests, then evaluation. Re-running with the same environment should reproduce results.
-- Check README, slides and report against artifacts/metrics.json.
-
-## Final submission
-- Add team name and both registered member names in submission.json.
-- Test and push preserved commits; do not manufacture or backdate history.
-- Deploy and add the real live URL in README and submission.json.
-- Record a 5–6 minute video; test its viewing permissions while signed out.
-- Run scripts/check_submission.py; verify the official portal fields and deadline.
-- Upload files, submit, and save portal confirmation.
+## Technical and submission
+- Run tests and evaluation locally; compare metrics with README and report.
+- Verify all examples are synthetic and no production connection is claimed.
+- Add team details, deploy, test public app and video links, run submission check, then submit.

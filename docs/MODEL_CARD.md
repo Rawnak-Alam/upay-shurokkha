@@ -32,7 +32,7 @@ Character TF-IDF ngrams 2–5 and logistic regression C=8. Trained from scratch 
 
 The model output is not calibrated for production prevalence. For nonempty text, the language contribution is 60 × clip((output − 0.2)/(threshold − 0.2 + 0.25), 0, 1). First recipient adds 8; amount above 2× usual adds up to 12; recovery + new device adds 22 (only one adds 8); reviewed adverse cases add min(30,20+5n). Total is capped at 100. Medium begins at 35, high at 65. Missing recipient history produces Insufficient information when otherwise below medium. No reviews or identity badge deduct risk.
 
-Weights are explicit product assumptions. A trained language component does not validate the composite index. Reviews in this prototype are predefined synthetic evidence fields; it does not verify complaints. The device/recovery signal is a rule, not a trained account-takeover model.
+Weights are explicit product assumptions. A trained language component does not validate the composite index. The underlying policy supports hypothetical reviewed-case and device/recovery fields, but the customer demo supplies zero/false because those fields are not available. The payment screen uses only entered amount/reason and fictional sender history. It does not verify complaints or account takeover.
 
 ## Limitations and failures
 
