@@ -137,4 +137,4 @@ Reference materials: AI Hackathon 2026 Student Project Guideline (DIU CPC × upa
 
 ## License
 
-MIT, as already selected in this repository. See `LICENSE`. Third-party packages retain their own licenses. The upay name does not imply endorsement.
+MIT, as already selected in this repository. See `LICENSE`. Third-party packages retain their own licenses. The bundled Noto Sans Bengali font is from google/fonts and uses the SIL Open Font License in assets/FONT_LICENSE.txt. The upay name does not imply endorsement.

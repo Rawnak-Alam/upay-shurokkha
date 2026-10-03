@@ -15,7 +15,7 @@ from shurokkha.safety import fit_safety,PaymentContext,assess
 ROOT=Path(__file__).resolve().parent
 st.set_page_config(page_title="Upay Shurokkha | Decision Lab",page_icon="🛡️",layout="wide")
 font_data=base64.b64encode((ROOT/"assets/NotoSansBengali.ttf").read_bytes()).decode()
-st.markdown(f"<style>@font-face{{font-family:ShurokkhaBengali;src:url(data:font/ttf;base64,{font_data}) format('truetype');font-weight:100 900;}} [data-testid='stMarkdownContainer'] p,[data-testid='stMetricValue']{{font-family:'Source Sans Pro',ShurokkhaBengali,sans-serif;}}</style>",unsafe_allow_html=True)
+st.markdown(f"<style>@font-face{{font-family:ShurokkhaBengali;src:url(data:font/ttf;base64,{font_data}) format('truetype');font-weight:100 900;}} [data-testid='stMarkdownContainer'] p,[data-testid='stMetricValue'],small{{font-family:'Source Sans Pro',ShurokkhaBengali,sans-serif;}}</style>",unsafe_allow_html=True)
 st.markdown('''<style>
 .block-container{padding-top:2rem;max-width:1300px}h1,h2,h3{letter-spacing:-.025em}
 [data-testid="stSidebar"]{background:#14283e}[data-testid="stSidebar"] *{color:#f3f7fb}
