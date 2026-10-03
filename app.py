@@ -1,5 +1,6 @@
 """Interactive synthetic agent planning and pre-payment demo."""
 from pathlib import Path
+import base64
 import json
 import uuid
 import pandas as pd
@@ -13,19 +14,35 @@ from shurokkha.safety import fit_safety, PaymentContext, assess
 
 ROOT = Path(__file__).resolve().parent
 st.set_page_config(page_title="Upay Shurokkha | Demo", page_icon="🛡️", layout="wide")
+font_data = base64.b64encode((ROOT / "assets/NotoSansBengali.ttf").read_bytes()).decode("ascii")
 st.markdown("""<style>
-.block-container{padding-top:2rem;max-width:1050px} h1,h2,h3{letter-spacing:-.025em}
-[data-testid="stSidebar"]{background:#14283e}[data-testid="stSidebar"] *{color:#f3f7fb}
-[data-testid="stMetric"]{background:white;border:1px solid #e1e8ed;padding:16px;border-radius:12px}
-.hero{background:#14283e;color:white;padding:25px 30px;border-radius:16px;margin-bottom:22px}
-.hero h1{color:white;font-size:34px;margin:0}.hero p{color:#cbd9e5;margin:8px 0 0}
-.eyebrow{color:#70dec1;font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:9px}
-.decision,.risk{padding:20px 24px;border-radius:12px;margin:18px 0}
-.decision{border:1px solid #bedbd3;border-left:6px solid #07866e;background:#f2faf7}
-.risk{border:1px solid #efd9b6;border-left:6px solid #d37b22;background:#fffaf1}
-.decision strong,.risk strong{font-size:23px;color:#143f36}.risk strong{color:#5b3b15}
-.decision p,.risk p{margin:7px 0 0;color:#34554e}
-</style>""", unsafe_allow_html=True)
+@font-face{font-family:ShurokkhaBangla;src:url(data:font/ttf;base64,{font_data}) format('truetype');font-weight:100 900}
+:root{--upay-blue:#126AA7;--upay-blue-dark:#10456E;--upay-gold:#F9BB2B;--upay-ink:#17324B;--upay-paper:#F4F8FC}
+html,body,.stApp,[data-testid="stMarkdownContainer"],[data-testid="stWidgetLabel"],input,textarea,button{
+ font-family:"Segoe UI",ShurokkhaBangla,Arial,sans-serif}
+.stApp{background:var(--upay-paper);color:var(--upay-ink)}
+.block-container{padding-top:2rem;max-width:1050px;padding-bottom:4rem}
+h1,h2,h3{letter-spacing:-.025em;color:var(--upay-blue-dark)}
+[data-testid="stSidebar"]{background:#FFFFFF;border-right:1px solid #D9E7F2}
+[data-testid="stSidebar"] *{color:var(--upay-ink)}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1{color:var(--upay-blue);font-weight:800}
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked){background:#E8F3FC;border-left:4px solid var(--upay-gold);border-radius:7px}
+[data-testid="stMetric"]{background:#FFFFFF;border:1px solid #D9E7F2;border-top:4px solid var(--upay-blue);padding:16px;border-radius:12px}
+[data-testid="stMetricValue"]{color:var(--upay-blue-dark)}
+[data-testid="stForm"],[data-testid="stExpander"]{background:#FFFFFF;border:1px solid #D9E7F2;border-radius:12px}
+div.stButton>button[kind="primary"],div.stFormSubmitButton>button[kind="primary"]{
+ background:var(--upay-blue);border-color:var(--upay-blue);color:#FFFFFF;border-radius:9px;font-weight:700}
+div.stButton>button[kind="primary"]:hover,div.stFormSubmitButton>button[kind="primary"]:hover{background:var(--upay-blue-dark)}
+.hero{background:linear-gradient(115deg,#10456E 0%,#126AA7 100%);border-bottom:5px solid var(--upay-gold);
+ color:#FFFFFF;padding:25px 30px;border-radius:16px;margin-bottom:22px}
+.hero h1{color:#FFFFFF;font-size:34px;margin:0}.hero p{color:#E7F4FF;margin:8px 0 0}
+.eyebrow{color:#FFE199;font-size:12px;font-weight:700;letter-spacing:2px;margin-bottom:9px}
+.decision,.risk{padding:20px 24px;border-radius:12px;margin:18px 0;background:#FFFFFF}
+.decision{border:1px solid #C8E1F1;border-left:6px solid var(--upay-blue)}
+.risk{border:1px solid #F4DC99;border-left:6px solid var(--upay-gold)}
+.decision strong,.risk strong{font-size:23px;color:var(--upay-blue-dark)}
+.decision p,.risk p{margin:7px 0 0;color:#365570}
+</style>""".replace("{font_data}", font_data), unsafe_allow_html=True)
 
 
 @st.cache_resource
@@ -102,9 +119,14 @@ if page == "Agent Planning":
               else "The point forecast does not show a shortage without an exchange."))
     st.write(f"• Estimated change in commission after exchange costs: **{money(selected.expected_net - no_action.expected_net)}**.")
     st.caption("This is a scenario, not a guaranteed outcome. Commission and costs are assumed, not upay rates. Confirm balance and partner availability before acting.")
+    with st.expander("How does this cash–float exchange work?"):
+        st.write("Conversion: **৳1 electronic float ↔ ৳1 physical cash**. It changes the form of the agent's working capital, not its total.")
+        st.write(f"Illustrative exchange service cost: **{money(cost)} fixed + 0.1% of the amount exchanged**. "
+                 f"For this recommendation, the estimated cost is **{money(cost + abs(action.cash_delta) * economics.variable_cost) if action.cash_delta else money(0)}**.")
+        st.write("The assumed commission on served transactions is 0.4%, and the largest single exchange considered is ৳20,000. These figures are prototype assumptions, not published upay fees or commissions.")
     with st.expander("Show forecast and replay"):
         fig = go.Figure()
-        for col, label, color in [("cash_in", "Cash-in", "#07866e"), ("cash_out", "Cash-out", "#d37b22")]:
+        for col, label, color in [("cash_in", "Cash-in", "#126AA7"), ("cash_out", "Cash-out", "#E0A11B")]:
             fig.add_trace(go.Scatter(x=pred.hour, y=pred[col], name=label, mode="lines", line=dict(color=color, width=3)))
         fig.update_layout(template="plotly_white", height=300, xaxis_title="Hour", yaxis_title="BDT",
                           margin=dict(l=10, r=10, t=20, b=10), legend=dict(orientation="h"))

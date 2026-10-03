@@ -20,7 +20,7 @@ Split: 3,528 training rows, 756 validation rows, 756 test rows. Validation estim
 
 One optional exchange before 09:00, 12:00 or 15:00. Positive cash_delta converts float into physical cash; negative does the reverse. Candidate grid spans ±min(capacity, total working capital), nine evenly spaced values plus feasible edge candidates. An action is considered only if affordable in every tested prediction scenario. Realized demand can still make a later action infeasible; the simulator skips it and logs failure with no fee.
 
-Cash-in increases cash and reduces float equally. Cash-out does the reverse. Whole tickets are either served or refused. No borrowing, partial fulfilment or overdraft. Cash + float is conserved. Fees and commission are external operating-account entries. Assumed instant partner access, no travel downtime, no financing costs.
+The balance exchange is 1:1 in BDT, with a separate illustrative service cost; it is not a foreign-exchange rate. Cash-in increases cash and reduces float equally. Cash-out does the reverse. Whole tickets are either served or refused. No borrowing, partial fulfilment or overdraft. Cash + float is conserved. Fees and commission are external operating-account entries. Assumed instant partner access, no travel downtime, no financing costs.
 
 Objective = expected net commission minus service_weight × expected refused value. Weights are 0, 0.001, 0.004 for Lower cost, Balanced, Higher availability. This expresses willingness to sacrifice profit to serve requests; it is not extra commission. Published economic evaluation uses Lower cost. No action is always feasible and wins an objective tie.
 

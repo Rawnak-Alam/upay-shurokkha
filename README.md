@@ -24,7 +24,9 @@ The [public upay Agent listing](https://play.google.com/store/apps/details?id=bd
 
 The concern index is an **uncalibrated design score**, not a probability or verdict. The hospital example can trigger a warning despite being legitimate. Judges can see why it appeared. The agent exchange suggestion assumes a partner is available and costs are illustrative.
 
-## Implemented features
+## Visual design
+
+The interface and presentation use a blue, yellow and white palette inspired by upay's public app icon. The UI uses Segoe UI when available and the bundled open-source Noto Sans Bengali for Bangla fallback. These are prototype design choices, not an official upay style guide or endorsement.\n\n## Implemented features
 
 - Fictional agent scenarios with only two visible balance inputs, a recommended exchange and source-aware reasons.
 - Hourly cash-in/out forecast and actual-day comparison under an optional replay.
@@ -113,7 +115,7 @@ Safety: manually authored 28 scenario families × three languages = 84 sentences
 
 ## Economics and limits
 
-Illustrative commission: 0.4% of served value. Exchange cost: 25 BDT + 0.1% of exchanged amount. Exchange capacity: 20,000 BDT. Default capital: cash 6,000 + float 24,000 BDT. Rates are invented assumptions, not upay commission rates. Costs and commissions use a separate operating ledger; they do not instantly change wallet balances. No financing, rent or travel delay is included.
+Cash and electronic float convert 1:1 in BDT; exchanging ৳20,000 changes the balance mix by ৳20,000 and incurs a separate illustrative cost. Illustrative commission: 0.4% of served value. Exchange cost: 25 BDT + 0.1% of exchanged amount. Exchange capacity: 20,000 BDT. Default capital: cash 6,000 + float 24,000 BDT. Rates are invented assumptions, not upay commission rates. Costs and commissions use a separate operating ledger; they do not instantly change wallet balances. No financing, rent or travel delay is included.
 
 The optimizer searches a finite grid; it does not guarantee a global optimum. Rebalancing requires a partner assumed available. Production history may omit refused demand. Correlated shocks, varied arrival order, missing data, new agents and real language variation require further validation. No user interviews or real-world pilot were conducted for this prototype.
 
