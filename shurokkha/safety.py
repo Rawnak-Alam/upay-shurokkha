@@ -109,11 +109,11 @@ def assess(bundle, context:PaymentContext):
         contributions["Description signal"]=round(60*language_index,1)
         if raw>=bundle["threshold"]:
             reasons.append("The description resembles scam-related examples in the small synthetic training set.")
-    if context.new_recipient:
+    if context.history_available and context.new_recipient:
         contributions["First payment"]=8.
         reasons.append("First payment to this recipient; this alone does not imply wrongdoing.")
     ratio=context.amount/context.usual_amount
-    if ratio>2:
+    if context.history_available and ratio>2:
         contributions["Unusual amount"]=round(min(12.,4*(ratio-2)),1)
         reasons.append(f"The amount is {ratio:.1f} times the sender's usual transfer.")
     if context.recent_recovery and context.new_device:

@@ -3,7 +3,7 @@ import pytest
 from shurokkha.data import generate_demand, events_from_hourly
 from shurokkha.liquidity import Action,Economics,simulate,recommend
 from shurokkha.forecast import features,FEATURES
-from shurokkha.safety import PaymentContext,text_dataset
+from shurokkha.safety import PaymentContext,text_dataset,fit_safety,assess
 
 
 def test_cash_in_out_signs_and_conservation():
@@ -52,6 +52,15 @@ def test_forecast_features_do_not_use_same_day_targets():
 def test_safety_families_are_disjoint():
     df=text_dataset()
     assert df.groupby("family").split.nunique().max()==1
+
+
+def test_missing_history_does_not_invent_prior_recipient_or_typical_amount():
+    context = PaymentContext(amount=20000, usual_amount=1000,
+                             new_recipient=True, history_available=False)
+    result = assess(fit_safety(), context)
+    assert result["level"] == "Insufficient information"
+    assert "First payment" not in result["contributions"]
+    assert "Unusual amount" not in result["contributions"]
 
 
 def test_same_seed_same_requested_sequence():

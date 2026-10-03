@@ -20,7 +20,7 @@ Split: 3,528 training rows, 756 validation rows, 756 test rows. Validation estim
 
 One optional exchange before 09:00, 12:00 or 15:00. Positive cash_delta converts float into physical cash; negative does the reverse. Candidate grid spans ±min(capacity, total working capital), nine evenly spaced values plus feasible edge candidates. An action is considered only if affordable in every tested prediction scenario. Realized demand can still make a later action infeasible; the simulator skips it and logs failure with no fee.
 
-The balance exchange is 1:1 in BDT, with a separate illustrative service cost; it is not a foreign-exchange rate. Cash-in increases cash and reduces float equally. Cash-out does the reverse. Whole tickets are either served or refused. No borrowing, partial fulfilment or overdraft. Cash + float is conserved. Fees and commission are external operating-account entries. Assumed instant partner access, no travel downtime, no financing costs.
+Cash-in increases cash and reduces float equally. Cash-out does the reverse. Whole tickets are either served or refused. No borrowing, partial fulfilment or overdraft. Cash + float is conserved. Fees and commission are external operating-account entries. Assumed instant partner access, no travel downtime, no financing costs.
 
 Objective = expected net commission minus service_weight × expected refused value. Weights are 0, 0.001, 0.004 for Lower cost, Balanced, Higher availability. This expresses willingness to sacrifice profit to serve requests; it is not extra commission. Published economic evaluation uses Lower cost. No action is always feasible and wins an objective tie.
 
@@ -30,7 +30,7 @@ Three scenarios scale both demand streams with validation multipliers and use di
 
 Character TF-IDF ngrams 2–5 and logistic regression C=8. Trained from scratch on 48 authored sentences; 12 validation; 24 test. All translations of a family remain in its split. Threshold selection penalizes validation false warnings twice as much as misses. The final threshold is approximately 0.50.
 
-The model output is not calibrated for production prevalence. For nonempty text, the language contribution is 60 × clip((output − 0.2)/(threshold − 0.2 + 0.25), 0, 1). First recipient adds 8; amount above 2× usual adds up to 12; recovery + new device adds 22 (only one adds 8); reviewed adverse cases add min(30,20+5n). Total is capped at 100. Medium begins at 35, high at 65. Missing recipient history produces Insufficient information when otherwise below medium. No reviews or identity badge deduct risk.
+The model output is not calibrated for production prevalence. For nonempty text, the language contribution is 60 × clip((output − 0.2)/(threshold − 0.2 + 0.25), 0, 1). First recipient adds 8; amount above 2× usual adds up to 12; recovery + new device adds 22 (only one adds 8); reviewed adverse cases add min(30,20+5n). Total is capped at 100. Medium begins at 35, high at 65. Missing recipient history suppresses first-payment and unusual-amount contributions and produces Insufficient information when otherwise below medium. No reviews or identity badge deduct risk.
 
 Weights are explicit product assumptions. A trained language component does not validate the composite index. The underlying policy supports hypothetical reviewed-case and device/recovery fields, but the customer demo supplies zero/false because those fields are not available. The payment screen uses only entered amount/reason and fictional sender history. It does not verify complaints or account takeover.
 
