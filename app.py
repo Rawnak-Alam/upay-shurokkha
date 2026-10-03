@@ -1,6 +1,7 @@
 """Run with: python -m streamlit run app.py"""
 from pathlib import Path
 import json
+import base64
 import uuid
 import pandas as pd
 import plotly.graph_objects as go
@@ -13,6 +14,8 @@ from shurokkha.safety import fit_safety,PaymentContext,assess
 
 ROOT=Path(__file__).resolve().parent
 st.set_page_config(page_title="Upay Shurokkha | Decision Lab",page_icon="🛡️",layout="wide")
+font_data=base64.b64encode((ROOT/"assets/NotoSansBengali.ttf").read_bytes()).decode()
+st.markdown(f"<style>@font-face{{font-family:ShurokkhaBengali;src:url(data:font/ttf;base64,{font_data}) format('truetype');font-weight:100 900;}} [data-testid='stMarkdownContainer'] p,[data-testid='stMetricValue']{{font-family:'Source Sans Pro',ShurokkhaBengali,sans-serif;}}</style>",unsafe_allow_html=True)
 st.markdown('''<style>
 .block-container{padding-top:2rem;max-width:1300px}h1,h2,h3{letter-spacing:-.025em}
 [data-testid="stSidebar"]{background:#14283e}[data-testid="stSidebar"] *{color:#f3f7fb}
@@ -107,9 +110,9 @@ if page=="Agent Planning":
         st.subheader("Expected demand")
         fig=go.Figure()
         for col,label,color,rgba in [("cash_in","Cash-in","#07866e","rgba(7,134,110,.10)"),("cash_out","Cash-out","#d37b22","rgba(211,123,34,.10)")]:
-            fig.add_trace(go.Scatter(x=pred.hour,y=pred[f"{col}_upper"],line=dict(width=0),showlegend=False,hoverinfo="skip"))
-            fig.add_trace(go.Scatter(x=pred.hour,y=pred[f"{col}_lower"],line=dict(width=0),fill="tonexty",fillcolor=rgba,showlegend=False,hoverinfo="skip"))
-            fig.add_trace(go.Scatter(x=pred.hour,y=pred[col],name=label,line=dict(color=color,width=3)))
+            fig.add_trace(go.Scatter(mode="lines",x=pred.hour,y=pred[f"{col}_upper"],line=dict(width=0),showlegend=False,hoverinfo="skip"))
+            fig.add_trace(go.Scatter(mode="lines",x=pred.hour,y=pred[f"{col}_lower"],line=dict(width=0),fill="tonexty",fillcolor=rgba,showlegend=False,hoverinfo="skip"))
+            fig.add_trace(go.Scatter(mode="lines",x=pred.hour,y=pred[col],name=label,line=dict(color=color,width=3)))
         st.plotly_chart(plot_layout(fig),width="stretch")
         st.caption("Shaded ranges use the 90th percentile of absolute errors on validation data; actual test coverage is shown in Evidence. They are not guaranteed 90% intervals.")
     with right:
@@ -119,7 +122,7 @@ if page=="Agent Planning":
         for res,prefix,dash in [(expected,"No action","dot"),(planned,"Suggested","solid")]:
             tr=pd.DataFrame(res["trace"])
             for col,label,color in [("physical_cash","cash","#07866e"),("electronic_float","float","#4978c6")]:
-                fig.add_trace(go.Scatter(x=tr.hour,y=tr[col],name=f"{prefix}: {label}",line=dict(color=color,dash=dash)))
+                fig.add_trace(go.Scatter(mode="lines",x=tr.hour,y=tr[col],name=f"{prefix}: {label}",line=dict(color=color,dash=dash)))
         st.plotly_chart(plot_layout(fig),width="stretch")
     if row.expected_refused_value>0:
         st.info(f"Some demand remains unserved in the recommendation scenarios: mean {money(row.expected_refused_value)}. Exchanging cash and float cannot create more total working capital.")
