@@ -1,0 +1,85 @@
+split,family,label,language,text
+train,account_block,1,English,Send money now or your wallet account will be blocked
+train,account_block,1,Banglish,Ekhoni taka pathan na hole account bondho hobe
+train,account_block,1,Bangla,এখনই টাকা পাঠান না হলে আপনার অ্যাকাউন্ট বন্ধ হবে
+train,prize_fee,1,English,Pay an advance fee to collect your lottery prize
+train,prize_fee,1,Banglish,Lottery prize pete age fee pathan
+train,prize_fee,1,Bangla,লটারির পুরস্কার পেতে আগে ফি পাঠান
+train,fake_support,1,English,I am support send money to verify your wallet
+train,fake_support,1,Banglish,Ami support theke bolchi wallet verify korte taka pathan
+train,fake_support,1,Bangla,আমি সাপোর্ট থেকে বলছি ওয়ালেট যাচাই করতে টাকা পাঠান
+train,otp_request,1,English,Share your OTP and PIN so I can fix your account
+train,otp_request,1,Banglish,Account thik korte apnar OTP ar PIN din
+train,otp_request,1,Bangla,অ্যাকাউন্ট ঠিক করতে আপনার ওটিপি এবং পিন দিন
+train,double_money,1,English,Send cash to this number and get double money today
+train,double_money,1,Banglish,Ei number e taka dile ajkei digun taka paben
+train,double_money,1,Bangla,এই নম্বরে টাকা দিলে আজই দ্বিগুণ টাকা পাবেন
+train,secrecy,1,English,Keep this secret send the payment immediately do not call anyone
+train,secrecy,1,Banglish,Kauke bolben na ekhoni taka pathan phone korben na
+train,secrecy,1,Bangla,কাউকে বলবেন না এখনই টাকা পাঠান ফোন করবেন না
+train,refund_fee,1,English,Pay a processing fee first to unlock your refund
+train,refund_fee,1,Banglish,Refund unlock korte age processing fee din
+train,refund_fee,1,Bangla,রিফান্ড পেতে আগে প্রসেসিং ফি দিন
+train,remote_access,1,English,Install this screen sharing app and open your wallet for verification
+train,remote_access,1,Banglish,Screen share app install kore wallet khulun verify korbo
+train,remote_access,1,Bangla,স্ক্রিন শেয়ার অ্যাপ খুলে ওয়ালেট দেখান যাচাই করব
+train,family,0,English,Sending money to my mother for groceries
+train,family,0,Banglish,Ma ke bajar korar taka pathacchi
+train,family,0,Bangla,মাকে বাজার করার টাকা পাঠাচ্ছি
+train,rent,0,English,Paying my monthly rent to the landlord
+train,rent,0,Banglish,Bari bharar taka dicchi malik ke
+train,rent,0,Bangla,বাড়িওয়ালাকে মাসিক ভাড়া দিচ্ছি
+train,tuition,0,English,Paying university tuition through the official payment channel
+train,tuition,0,Banglish,University tuition fee official channel e dicchi
+train,tuition,0,Bangla,বিশ্ববিদ্যালয়ের টিউশন ফি অফিসিয়াল মাধ্যমে দিচ্ছি
+train,friend,0,English,Returning money I borrowed from a friend
+train,friend,0,Banglish,Bondhur theke dhar neya taka ferot dicchi
+train,friend,0,Bangla,বন্ধুর ধার নেওয়া টাকা ফেরত দিচ্ছি
+train,salary,0,English,Paying staff wages for this month
+train,salary,0,Banglish,Staff der ei masher beton dicchi
+train,salary,0,Bangla,কর্মীদের এই মাসের বেতন দিচ্ছি
+train,shopping,0,English,Paying for groceries I received at the shop
+train,shopping,0,Banglish,Dokane bajar kine payment dicchi
+train,shopping,0,Bangla,দোকানে বাজার কিনে টাকা দিচ্ছি
+train,urgent_medicine,0,English,Urgently paying my known pharmacy for medicine received
+train,urgent_medicine,0,Banglish,Porichito pharmacy te oshudher taka joruri dicchi
+train,urgent_medicine,0,Bangla,পরিচিত ফার্মেসিতে জরুরি ওষুধের দাম দিচ্ছি
+train,negation,0,English,Nobody requested a PIN this is a normal family payment
+train,negation,0,Banglish,Keu PIN chayni eta poribarer shadharon payment
+train,negation,0,Bangla,কেউ পিন চায়নি এটি পরিবারের সাধারণ পেমেন্ট
+validation,job_fee,1,English,Send a registration fee first to secure a guaranteed job
+validation,job_fee,1,Banglish,Guaranteed chakri pete age registration fee pathan
+validation,job_fee,1,Bangla,নিশ্চিত চাকরি পেতে আগে রেজিস্ট্রেশন ফি পাঠান
+validation,threat,1,English,Transfer immediately to avoid police arrest do not tell anyone
+validation,threat,1,Banglish,Police er arrest thekate ekhoni taka pathan kauke bolben na
+validation,threat,1,Bangla,গ্রেপ্তার এড়াতে এখনই টাকা পাঠান কাউকে বলবেন না
+validation,school,0,English,Sending the child's school fee to the verified school office
+validation,school,0,Banglish,Bacchar school fee school office e dicchi
+validation,school,0,Bangla,সন্তানের স্কুলের ফি স্কুল অফিসে দিচ্ছি
+validation,bill,0,English,Paying this month's electricity bill
+validation,bill,0,Banglish,Ei masher bidyut bill dicchi
+validation,bill,0,Bangla,এই মাসের বিদ্যুৎ বিল দিচ্ছি
+test,reactivation,1,English,A caller says I must pay immediately to reactivate my account
+test,reactivation,1,Banglish,Caller bolse account abar chalu korte ekhoni taka dite hobe
+test,reactivation,1,Bangla,ফোনে বলেছে অ্যাকাউন্ট আবার চালু করতে এখনই টাকা দিতে হবে
+test,grant,1,English,Government grant is waiting send an advance verification fee to receive it
+test,grant,1,Banglish,Sorkari onudan pete age verification fee pathate bolse
+test,grant,1,Bangla,সরকারি অনুদান পেতে আগে যাচাই ফি পাঠাতে বলেছে
+test,investment,1,English,A stranger promises guaranteed daily profit if I send money now
+test,investment,1,Banglish,Oporichito lok guaranteed daily profit bolse ekhoni taka dile
+test,investment,1,Bangla,অপরিচিত লোক এখনই টাকা দিলে নিশ্চিত দৈনিক লাভের কথা বলেছে
+test,cancel_after_pay,1,English,Cancel your order after paying then send the payment again
+test,cancel_after_pay,1,Banglish,Payment er por order cancel kore abar taka pathan
+test,cancel_after_pay,1,Bangla,টাকা দেওয়ার পর অর্ডার বাতিল করে আবার টাকা পাঠান
+test,hospital,0,English,Paying a large hospital bill after confirming with the billing desk
+test,hospital,0,Banglish,Hospital billing desk e confirm kore boro bill dicchi
+test,hospital,0,Bangla,হাসপাতালের বিলিং ডেস্কে নিশ্চিত করে বড় বিল দিচ্ছি
+test,new_supplier,0,English,First payment to a new supplier after receiving the goods and invoice
+test,new_supplier,0,Banglish,Mal ar invoice bujhe notun supplier ke prothom payment dicchi
+test,new_supplier,0,Bangla,পণ্য ও চালান বুঝে নতুন সরবরাহকারীকে প্রথম টাকা দিচ্ছি
+test,urgent_family,0,English,My brother needs urgent travel money I called him to confirm
+test,urgent_family,0,Banglish,Bhai er joruri jatrar taka phone kore confirm korechi
+test,urgent_family,0,Bangla,ভাইয়ের জরুরি যাতায়াতের টাকা ফোন করে নিশ্চিত করেছি
+test,reported_scam,0,English,I refused a scam asking for OTP now sending money to my sister
+test,reported_scam,0,Banglish,OTP chawa scam reject kore ekhon bon ke taka pathacchi
+test,reported_scam,0,Bangla,ওটিপি চাওয়া প্রতারণা প্রত্যাখ্যান করে এখন বোনকে টাকা পাঠাচ্ছি

@@ -1,0 +1,25 @@
+split,family,label,language,text,model_output,model_warning,keyword_warning
+test,reactivation,1,English,A caller says I must pay immediately to reactivate my account,0.682436870879473,True,False
+test,reactivation,1,Banglish,Caller bolse account abar chalu korte ekhoni taka dite hobe,0.8094538040097197,True,False
+test,reactivation,1,Bangla,ফোনে বলেছে অ্যাকাউন্ট আবার চালু করতে এখনই টাকা দিতে হবে,0.7563199958637106,True,False
+test,grant,1,English,Government grant is waiting send an advance verification fee to receive it,0.5893376432572914,True,False
+test,grant,1,Banglish,Sorkari onudan pete age verification fee pathate bolse,0.7523657047927005,True,False
+test,grant,1,Bangla,সরকারি অনুদান পেতে আগে যাচাই ফি পাঠাতে বলেছে,0.8294871224994202,True,True
+test,investment,1,English,A stranger promises guaranteed daily profit if I send money now,0.5578731229815342,True,True
+test,investment,1,Banglish,Oporichito lok guaranteed daily profit bolse ekhoni taka dile,0.551953884168622,True,True
+test,investment,1,Bangla,অপরিচিত লোক এখনই টাকা দিলে নিশ্চিত দৈনিক লাভের কথা বলেছে,0.5031094175063382,True,False
+test,cancel_after_pay,1,English,Cancel your order after paying then send the payment again,0.5280502618017134,True,False
+test,cancel_after_pay,1,Banglish,Payment er por order cancel kore abar taka pathan,0.48367051084785534,False,False
+test,cancel_after_pay,1,Bangla,টাকা দেওয়ার পর অর্ডার বাতিল করে আবার টাকা পাঠান,0.5586974403401663,True,False
+test,hospital,0,English,Paying a large hospital bill after confirming with the billing desk,0.36615736699066953,False,False
+test,hospital,0,Banglish,Hospital billing desk e confirm kore boro bill dicchi,0.36153457558679275,False,False
+test,hospital,0,Bangla,হাসপাতালের বিলিং ডেস্কে নিশ্চিত করে বড় বিল দিচ্ছি,0.26990239015882894,False,False
+test,new_supplier,0,English,First payment to a new supplier after receiving the goods and invoice,0.40987930913473763,False,False
+test,new_supplier,0,Banglish,Mal ar invoice bujhe notun supplier ke prothom payment dicchi,0.2817951314459679,False,False
+test,new_supplier,0,Bangla,পণ্য ও চালান বুঝে নতুন সরবরাহকারীকে প্রথম টাকা দিচ্ছি,0.36061094718472403,False,False
+test,urgent_family,0,English,My brother needs urgent travel money I called him to confirm,0.4464428469241222,False,False
+test,urgent_family,0,Banglish,Bhai er joruri jatrar taka phone kore confirm korechi,0.42962253157390834,False,False
+test,urgent_family,0,Bangla,ভাইয়ের জরুরি যাতায়াতের টাকা ফোন করে নিশ্চিত করেছি,0.40126564275531995,False,False
+test,reported_scam,0,English,I refused a scam asking for OTP now sending money to my sister,0.41180352682629456,False,True
+test,reported_scam,0,Banglish,OTP chawa scam reject kore ekhon bon ke taka pathacchi,0.5783884646020264,True,True
+test,reported_scam,0,Bangla,ওটিপি চাওয়া প্রতারণা প্রত্যাখ্যান করে এখন বোনকে টাকা পাঠাচ্ছি,0.578626073563643,True,True

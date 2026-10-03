@@ -1,0 +1,186 @@
+{
+  "data": "Synthetic only; no production inference established",
+  "seed": 20261004,
+  "forecast": {
+    "metrics": [
+      {
+        "model": "Historical same-weekday average",
+        "target": "cash_in",
+        "MAE_BDT": 1466.07
+      },
+      {
+        "model": "Historical same-weekday average",
+        "target": "cash_out",
+        "MAE_BDT": 2274.67
+      },
+      {
+        "model": "Extra Trees",
+        "target": "cash_in",
+        "MAE_BDT": 1209.83
+      },
+      {
+        "model": "Extra Trees",
+        "target": "cash_out",
+        "MAE_BDT": 1613.86
+      }
+    ],
+    "interval_coverage": [
+      0.8756613756613757,
+      0.9126984126984127
+    ],
+    "train_rows": 3528,
+    "validation_rows": 756,
+    "test_rows": 756,
+    "train_end": "2026-04-22",
+    "validation_start": "2026-04-23",
+    "test_start": "2026-05-14",
+    "scenario_multipliers": [
+      0.6949610150176158,
+      0.9239584163829186,
+      1.268276961197741
+    ]
+  },
+  "liquidity": {
+    "agent_days": 63,
+    "initial_cash": 6000,
+    "initial_float": 24000,
+    "preference": "Lower cost",
+    "economics": {
+      "commission_rate": 0.004,
+      "fixed_cost": 25.0,
+      "variable_cost": 0.001,
+      "max_exchange": 20000.0
+    },
+    "strategies": [
+      {
+        "strategy": "Fixed 50/50 opening reserve",
+        "net_earnings": 316.356,
+        "refused_requests": 5.587,
+        "refused_value": 9212.698,
+        "shortage_hours": 1.873,
+        "rebalance_cost": 34.0,
+        "action_failed": 0.0
+      },
+      {
+        "strategy": "Historical forecast + optimizer",
+        "net_earnings": 328.889,
+        "refused_requests": 7.921,
+        "refused_value": 12992.063,
+        "shortage_hours": 2.683,
+        "rebalance_cost": 6.349,
+        "action_failed": 0.016
+      },
+      {
+        "strategy": "ML forecast + optimizer",
+        "net_earnings": 339.876,
+        "refused_requests": 5.063,
+        "refused_value": 8479.365,
+        "shortage_hours": 2.032,
+        "rebalance_cost": 13.413,
+        "action_failed": 0.032
+      },
+      {
+        "strategy": "No rebalance",
+        "net_earnings": 334.654,
+        "refused_requests": 7.952,
+        "refused_value": 13138.095,
+        "shortage_hours": 2.667,
+        "rebalance_cost": 0.0,
+        "action_failed": 0.0
+      }
+    ],
+    "ml_vs_historical_mean_net_delta": 10.987301587301582,
+    "ml_vs_historical_wins": 24,
+    "ml_vs_historical_losses": 4,
+    "stress": [
+      {
+        "case": "Normal capital",
+        "cash_delta": 20000.0,
+        "hour": 9,
+        "net_delta_vs_no_action": 8.2,
+        "refused_requests": 38,
+        "action_failed": false
+      },
+      {
+        "case": "Low capital",
+        "cash_delta": 0.0,
+        "hour": 9,
+        "net_delta_vs_no_action": 0.0,
+        "refused_requests": 78,
+        "action_failed": false
+      },
+      {
+        "case": "Expensive exchange",
+        "cash_delta": 0.0,
+        "hour": 9,
+        "net_delta_vs_no_action": 0.0,
+        "refused_requests": 47,
+        "action_failed": false
+      },
+      {
+        "case": "Unexpected demand shock",
+        "cash_delta": 20000.0,
+        "hour": 9,
+        "net_delta_vs_no_action": 36.2,
+        "refused_requests": 117,
+        "action_failed": false
+      }
+    ]
+  },
+  "safety": {
+    "metrics": {
+      "Character TF-IDF + logistic regression": {
+        "precision": 0.8461538461538461,
+        "recall": 0.9166666666666666,
+        "false_warning_rate": 0.16666666666666666,
+        "TP": 11,
+        "FP": 2,
+        "FN": 1,
+        "TN": 10
+      },
+      "Keyword baseline": {
+        "precision": 0.5,
+        "recall": 0.25,
+        "false_warning_rate": 0.25,
+        "TP": 3,
+        "FP": 3,
+        "FN": 9,
+        "TN": 9
+      }
+    },
+    "by_language": {
+      "Bangla": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "false_warning_rate": 0.25,
+        "TP": 4,
+        "FP": 1,
+        "FN": 0,
+        "TN": 3
+      },
+      "Banglish": {
+        "precision": 0.75,
+        "recall": 0.75,
+        "false_warning_rate": 0.25,
+        "TP": 3,
+        "FP": 1,
+        "FN": 1,
+        "TN": 3
+      },
+      "English": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_warning_rate": 0.0,
+        "TP": 4,
+        "FP": 0,
+        "FN": 0,
+        "TN": 4
+      }
+    },
+    "threshold": 0.49999999999999994,
+    "train_rows": 48,
+    "validation_rows": 12,
+    "test_rows": 24,
+    "scope": "Text classifier evaluation only; composite concern index is not calibrated or validated as fraud probability."
+  }
+}
